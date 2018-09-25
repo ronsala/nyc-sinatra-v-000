@@ -1,12 +1,13 @@
 class FiguresController < ApplicationController
-
+  
   get "/figures/new" do
     erb :"figures/new"
   end
 
   get "/figures/:id" do
-    @figure = Figure.find(:id)
-    erb :'/figures/show'
+    # @figure = Figure.find(:id)
+    # binding.pry
+    erb :"/figures/show"
   end
 
   get "/figures" do

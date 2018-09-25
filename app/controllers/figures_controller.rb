@@ -14,4 +14,8 @@ class FiguresController < ApplicationController
     @figures = Figure.all
     erb :"figures/index"
   end
+
+  post "/figures" do
+    binding.pry
+  end
 end

@@ -1,7 +1,7 @@
 <h2>All Historical Landmarks</h2>
 
 <% @landmarks.each do | l | %>
-  <%= l.name %>
+  <h3><label>Name: </label><%= l.name %><label>Year Completed: </label><%= l.year_completed %></h3>
 <% end %>
 
 <a class="button" href="/figures">Figures</a>

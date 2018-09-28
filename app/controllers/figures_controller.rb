@@ -4,6 +4,20 @@ class FiguresController < ApplicationController
     erb :"figures/new"
   end
 
+  post "/figures" do
+    # binding.pry
+    @figure = Figure.create(params[:figure])
+    # binding.pry
+    if !params[:title][:name].empty?
+      @figure.titles << Title.create(params[:title])
+    end
+      
+      # :title_id => params[:figure][:title_ids[]])
+    # , :landmark_id => params[:landmark_ids[]])
+    # binding.pry
+
+  end
+
   get '/figures/:id/edit' do
     @figure = Figure.find_by_id(params[:id])
     # binding.pry
@@ -25,9 +39,5 @@ class FiguresController < ApplicationController
   get "/figures" do
     @figures = Figure.all
     erb :"figures/index"
-  end
-
-  post "/figures" do
-    binding.pry
   end
 end

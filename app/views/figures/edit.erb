@@ -3,12 +3,12 @@
 <form action="/figures/<%= @figure.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <label>Name: </label><%= @figure.name %>
-  <label>New Name: </label><input type="text" name="figure[name]">
+  <label>New Name: </label><input type="text" id="figure_name" name="figure[name]">
   <label>Titles: </label>
   <% @figure.each do |f|%>
   <%= @figure.title%>
   <% end %>
-  <label>New Titles: </label><input type="text" name="figure[title_ids]">
+  <label>New Title: </label><input type="text" id="figure_title" name="figure[title_ids]">
   <input type="submit" value="submit">
 </form>
 

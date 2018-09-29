@@ -14,7 +14,7 @@ class FiguresController < ApplicationController
     end
 
     if !params[:title_ids].empty?
-      params[:figure][:title_ids].each_index do | i |
+      params[:figure][:title_ids].each_with_index do | i |
       @figure.titles << Title.create(params[:figure][:title_ids][i])
       end
     end

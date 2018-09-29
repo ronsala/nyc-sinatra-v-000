@@ -4,7 +4,7 @@
   <label>Name </label><input type="text" id="figure_name" name="figure[name]" value=""><br><br>
   <h3><label>Titles:</label></h3>
   <% Title.all.each do |t| %>
-  <label><%=t.name%> </label><input type="checkbox" id="title_<%=t.id%>" name="figure[title_ids][]" value="<%=t.name%>"></input><br>
+  <label><%=t.name%> </label><input type="checkbox" id="title_<%=t.id%>" name="figure[title_ids][]" value="<%=t.id%>"></input><br>
   <%end%>
   <h3><label>Create New Title:</label></h3>
   <input type="text" id="new_title" name="title[name]" value=""></input>

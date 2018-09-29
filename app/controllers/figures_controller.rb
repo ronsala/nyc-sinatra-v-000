@@ -12,38 +12,18 @@ class FiguresController < ApplicationController
       @figure.titles << Title.create(params[:title])    
     end
     if !params[:landmark][:name].empty?
-      @figure.landmarks << Landmark.create(params[:landmark])
+      # binding.pry
+      @figure.landmarks << Landmark.create(:name => params[:landmark][:name])
     end
+
+        #    create a new figure with a new landmark
+    # if !params[:figure][:landmark][:name].empty? && !params[:figure][:landmark][:year].empty?
+    # binding.pry
+      # @figure.landmarks << Landmark.create(:name => params[:figure][:landmark][:name], :year_completed => params[:figure][:landmark][:year])
+    # end
 
     @figure.save
     redirect '/figures'
-
-    # if !params[:title][:name].empty?
-    #   @figure.titles << Title.create(params[:figure][:title])
-    # end
-
-    # if !params[:figure][:title_ids].empty?
-    #   params[:figure][:title_ids].each_with_index do | t, i |
-    #   @figure.titles << Title.find_by_id(params[:figure][:title_ids][i])
-    #   end
-    #   @figure.save
-    # end
-
-    # create a new figure with a landmark
-    # if !params[:figure][:landmark_ids].empty?
-      # binding.pry
-      # params[:figure][:landmark_ids].each_with_index do | l, i |
-      # @figure.landmarks << Landmark.find_by_id(params[:figure][:landmark_ids][i])
-      # end
-      # @figure.save
-    # end
- 
-
-    #    create a new figure with a new landmark
-    # if !params[:figure][:landmark][:name].empty? && !params[:figure][:landmark][:year].empty?
-    #   @figure.landmarks << Landmark.create(:name => params[:figure][:landmark][:name], :year_completed => params[:figure][:landmark][:year])
-    #   @figure.save
-    # end
   end
 
   get '/figures/:id/edit' do

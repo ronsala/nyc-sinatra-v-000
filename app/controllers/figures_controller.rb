@@ -5,28 +5,22 @@ class FiguresController < ApplicationController
   end
 
   post "/figures" do
-    # binding.pry
     @figure = Figure.create(:name => params["figure"]["name"], :title_ids => params["figure"]["title_ids"], :landmark_ids => params["figure"]["landmark_ids"])
 
     if !params[:title][:name].empty?       
       @figure.titles << Title.create(params[:title])    
     end
+
     if !params[:landmark][:name].empty?
-      # binding.pry
       @figure.landmarks << Landmark.create(:name => params[:landmark][:name])
     end
-
-        #    create a new figure with a new landmark
-    # if !params[:figure][:landmark][:name].empty? && !params[:figure][:landmark][:year].empty?
-    # binding.pry
-      # @figure.landmarks << Landmark.create(:name => params[:figure][:landmark][:name], :year_completed => params[:figure][:landmark][:year])
-    # end
 
     @figure.save
     redirect '/figures'
   end
 
   get '/figures/:id/edit' do
+  # get "/figures/#{@figure.id}/edit" do
     @figure = Figure.find_by_id(params[:id])
     # binding.pry
     erb :"figures/edit"

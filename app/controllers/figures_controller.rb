@@ -7,7 +7,6 @@ class FiguresController < ApplicationController
   post "/figures" do
     @figure = Figure.create(:name=> params[:figure][:name])
 
-
     
     if !params[:figure][:title_ids].empty?
       params[:figure][:title_ids].each_with_index do | t, i |

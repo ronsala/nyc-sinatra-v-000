@@ -5,6 +5,7 @@ class FiguresController < ApplicationController
   end
 
   post "/figures" do
+    # binding.pry
     @figure = Figure.create(:name=> params[:figure][:name])
 
     if !params[:title][:name].empty?
@@ -19,7 +20,21 @@ class FiguresController < ApplicationController
       @figure.save
     end
 
+    # create a new figure with a landmark
+    # if !params[:figure][:landmark_ids].empty?
+      # binding.pry
+      params[:figure][:landmark_ids].each_with_index do | l, i |
+      @figure.landmarks << Landmark.find_by_id(params[:figure][:landmark_ids][i])
+      end
+      @figure.save
+    # end
   end
+
+      #create a new figure with a new landmark
+    # if !params[:figure][:landmark][:name].empty? && !params[:figure][:landmark][:year].empty?
+    #   @figure.landmarks << Landmark.create(:name => params[:figure][:landmark][:name], :year_completed => [:figure][:landmark][:year])
+    #   @figure.save
+    # end
 
   get '/figures/:id/edit' do
     @figure = Figure.find_by_id(params[:id])

@@ -6,15 +6,18 @@ class FiguresController < ApplicationController
 
   post "/figures" do
     # binding.pry
-    @figure = Figure.create(params[:figure])
-    # binding.pry
+    # @figure = Figure.create(params[:figure])
+    @figure = Figure.create(:name=> params[:figure][:name])
+
     if !params[:title][:name].empty?
-      @figure.titles << Title.create(params[:title])
+      @figure.titles << Title.create(params[:figure][:title])
     end
-      
-      # :title_id => params[:figure][:title_ids[]])
-    # , :landmark_id => params[:landmark_ids[]])
-    # binding.pry
+
+    if !params[:title_ids].empty?
+      params[:figure][:title_ids].each_index do | i |
+      @figure.titles << Title.create(params[:figure][:title_ids][i])
+      end
+    end
 
   end
 

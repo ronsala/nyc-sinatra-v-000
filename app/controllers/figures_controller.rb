@@ -5,20 +5,13 @@ class FiguresController < ApplicationController
   end
 
   post "/figures" do
-    # binding.pry
-    # @figure = Figure.create(params[:figure])
     @figure = Figure.create(:name=> params[:figure][:name])
 
-    if !params[:title][:name].empty?
-      @figure.titles << Title.create(params[:figure][:title])
-    end
 
+    
     if !params[:figure][:title_ids].empty?
-
       params[:figure][:title_ids].each_with_index do | t, i |
       @figure.titles << Title.find_by_id(params[:figure][:title_ids][i])
-      # binding.pry
-
       end
       @figure.save
     end
